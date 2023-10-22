@@ -26,8 +26,9 @@ async def yes_answer(call: types.CallbackQuery):
     except sqlite3.IntegrityError:
         pass
 
-    await bot.send_message(
+    await bot.edit_message_text(
         chat_id=call.message.chat.id,
+        message_id=call.message.message_id,
         text='glad u r okay!^^',
     )
 
@@ -43,9 +44,10 @@ async def no_answer(call: types.CallbackQuery):
     except sqlite3.IntegrityError:
         pass
 
-    await bot.send_message(
+    await bot.edit_message_text(
         chat_id=call.message.chat.id,
-        text='take care of yourself!^^',
+        message_id=call.message.message_id,
+        text='take care of urself!^^',
     )
 
 
