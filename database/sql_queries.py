@@ -35,6 +35,16 @@ CREATE_USER_FORM_TABLE_QUERY = '''
         )
 '''
 
+CREATE_LIKE_TABLE_QUERY = '''
+        CREATE TABLE IF NOT EXISTS like_user
+        (
+        ID INTEGER PRIMARY KEY,
+        OWNER_TELEGRAM_ID INTEGER,
+        LIKER_TELEGRAM_ID INTEGER,
+        UNIQUE (OWNER_TELEGRAM_ID, LIKER_TELEGRAM_ID)
+        )
+'''
+
 CREATE_USER_RESPONSES_TABLE_QUERY = '''
         CREATE TABLE IF NOT EXISTS user_responses
         (
@@ -60,6 +70,10 @@ INSERT_USER_RESPONSE = '''
 INSERT INTO user_responses VALUES(?,?,?)
 '''
 
+INSERT_LIKE_QUERY = '''
+INSERT INTO like_user VALUES(?,?,?)
+'''
+
 SELECT_USER_QUERY = '''
 SELECT * FROM telegram_users WHERE TELEGRAM_ID = ?
 '''
@@ -68,10 +82,22 @@ SELECT_ALL_USERS_QUERY = '''
 SELECT * FROM telegram_users
 '''
 
+SELECT_ALL_USERS_FORM_QUERY = '''
+SELECT * FROM user_form
+'''
+
 SELECT_USER_FORM_QUERY = '''
 SELECT * FROM user_form WHERE TELEGRAM_ID = ?
 '''
 
 UPDATE_BAN_USER_COUNT_QUERY = '''
 UPDATE ban_users SET COUNT = COUNT + 1 WHERE TELEGRAM_ID = ? 
+'''
+
+DELETE_USER_FORM_QUERY = '''
+DELETE FROM user_form WHERE TELEGRAM_ID = ?
+'''
+
+UPDATE_USER_FORM_QUERY = '''
+UPDATE user_form SET NICKNAME = ?, BIO = ?, AGE = ?, OCCUPATION = ?, PHOTO = ? WHERE TELEGRAM_ID = ?
 '''

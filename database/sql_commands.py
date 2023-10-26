@@ -14,6 +14,7 @@ class Database:
         self.connection.execute(sql_queries.CREATE_USER_TABLE_QUERY)
         self.connection.execute(sql_queries.CREATE_BAN_USER_TABLE_QUERY)
         self.connection.execute(sql_queries.CREATE_USER_FORM_TABLE_QUERY)
+        self.connection.execute(sql_queries.CREATE_LIKE_TABLE_QUERY)
         self.connection.commit()
 
     def sql_create_user_responses_table(self):
@@ -97,3 +98,39 @@ class Database:
             sql_queries.SELECT_USER_FORM_QUERY,
             (telegram_id,)
         ).fetchall()
+
+    def sql_select_all_user_form_query(self):
+        self.cursor.row_factory = lambda cursor, row: {
+            'id': row[0],
+            'telegram_id': row[1],
+            'nickname': row[2],
+            'bio': row[3],
+            'age': row[4],
+            'occupation': row[5],
+            'photo': row[6],
+        }
+        return self.cursor.execute(
+            sql_queries.SELECT_ALL_USERS_FORM_QUERY,
+        ).fetchall()
+
+    def sql_insert_like_query(self, owner, liker):
+        self.cursor.execute(
+            sql_queries.INSERT_LIKE_QUERY,
+            (None, owner, liker,)
+        )
+        self.connection.commit()
+
+    def sql_delete_form_query(self, owner):
+        self.cursor.execute(
+            sql_queries.DELETE_USER_FORM_QUERY,
+            (owner,)
+        )
+        self.connection.commit()
+
+    def sql_update_user_form_query(self, nickname, bio, age, occupation, photo, telegram_id):
+        self.cursor.execute(
+            sql_queries.UPDATE_USER_FORM_QUERY,
+            (nickname, bio, age, occupation, photo, telegram_id,)
+        )
+        self.connection.commit()
+
