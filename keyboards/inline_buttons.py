@@ -7,7 +7,17 @@ async def start_keyboard():
         'start questionnaire <3',
         callback_data='start_questionnaire'
     )
+    registration_button = InlineKeyboardButton(
+        'registration <3',
+        callback_data='fsm_start'
+    )
+    my_profile_button = InlineKeyboardButton(
+        'my profile <3',
+        callback_data='my_profile'
+    )
     markup.add(questionnaire_button)
+    markup.add(registration_button)
+    markup.add(my_profile_button)
     return markup
 
 

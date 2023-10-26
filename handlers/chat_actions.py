@@ -33,7 +33,8 @@ async def chat_action(message: types.Message):
                     chat_id=message.chat.id,
                     text=f'no curse words in this chat 💥\n'
                          f'username: {message.from_user.username}\n'
-                         f'first-name: {message.from_user.first_name}'
+                         f'first-name: {message.from_user.first_name}\n'
+                         f'u may be banned!'
                 )
     else:
         await message.reply(
