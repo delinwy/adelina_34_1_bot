@@ -19,10 +19,15 @@ async def start_keyboard():
         'view profile <3',
         callback_data='random_profile'
     )
+    reference_menu_button = InlineKeyboardButton(
+        'referral menu <3',
+        callback_data='reference_menu'
+    )
     markup.add(questionnaire_button)
     markup.add(registration_button)
     markup.add(my_profile_button)
     markup.add(random_profile_button)
+    markup.add(reference_menu_button)
     return markup
 
 
@@ -88,6 +93,21 @@ async def my_profile_register():
         callback_data='fsm_start'
     )
     markup.add(registration_button)
+    return markup
+
+
+async def reference_menu_keyboard():
+    markup = InlineKeyboardMarkup()
+    reference_link_button = InlineKeyboardButton(
+        'referral link <3',
+        callback_data='reference_link'
+    )
+    reference_list_button = InlineKeyboardButton(
+        'referral list <3',
+        callback_data='reference_list'
+    )
+    markup.add(reference_link_button)
+    markup.add(reference_list_button)
     return markup
 
 
