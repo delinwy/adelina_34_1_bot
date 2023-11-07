@@ -4,30 +4,35 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 async def start_keyboard():
     markup = InlineKeyboardMarkup()
     questionnaire_button = InlineKeyboardButton(
-        'start questionnaire <3',
+        'start questionnaire ˚ʚ♡ɞ˚',
         callback_data='start_questionnaire'
     )
     registration_button = InlineKeyboardButton(
-        'registration <3',
+        'registration ˚ʚ♡ɞ˚',
         callback_data='fsm_start'
     )
     my_profile_button = InlineKeyboardButton(
-        'my profile <3',
+        'my profile ﾐ🎀・◦・ﾐ',
         callback_data='my_profile'
     )
     random_profile_button = InlineKeyboardButton(
-        'view profile <3',
+        'view profile ˚ʚ♡ɞ˚',
         callback_data='random_profile'
     )
     reference_menu_button = InlineKeyboardButton(
-        'referral menu <3',
+        'referral menu ˚ʚ♡ɞ˚',
         callback_data='reference_menu'
+    )
+    latest_news_button = InlineKeyboardButton(
+        'five latest news ˚ʚ♡ɞ˚',
+        callback_data='latest_news'
     )
     markup.add(questionnaire_button)
     markup.add(registration_button)
     markup.add(my_profile_button)
     markup.add(random_profile_button)
     markup.add(reference_menu_button)
+    markup.add(latest_news_button)
     return markup
 
 
